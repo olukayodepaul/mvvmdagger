@@ -1,19 +1,14 @@
 package com.mobiletraderv.paul.di.module;
 
 
-import android.app.Application;
-import android.arch.persistence.room.Room;
 import android.content.Context;
 import com.fatboyindustrial.gsonjodatime.DateTimeConverter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.mobiletraderv.paul.mvvm.MtDataSource;
-import com.mobiletraderv.paul.data.MtRepository;
-import com.mobiletraderv.paul.data.RetrofitService;
+import com.mobiletraderv.paul.repository.RetrofitService;
 import com.mobiletraderv.paul.di.qualifier.ApplicationContext;
 import com.mobiletraderv.paul.di.scope.ApplicationScope;
-import com.mobiletraderv.paul.data.MtDao;
-import com.mobiletraderv.paul.mvvm.MtDatabase;
+
 import org.joda.time.DateTime;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -29,9 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 @Module
-public class AppModule {
-
-    private MtDatabase demoDatabase;
+public class NetworkModule {
 
     @Provides
     @ApplicationScope
@@ -102,28 +95,5 @@ public class AppModule {
     public RetrofitService provideApiService(@Named("mt_server") Retrofit retrofit) {
         return retrofit.create(RetrofitService .class);
     }
-
-    public AppModule(Application mApplication) {
-        demoDatabase = Room.databaseBuilder(mApplication, MtDatabase.class, "mobiletrader").build();
-    }
-
-    @Provides
-    @ApplicationScope
-    MtDatabase providesRoomDatabase() {
-        return demoDatabase;
-    }
-
-    @Provides
-    @ApplicationScope
-    MtDao providesMtDao(MtDatabase mtDatabase) {
-        return mtDatabase.getProductDao();
-    }
-
-    @Provides
-    @ApplicationScope
-    MtRepository mtRepository(MtDao  mtDao) {
-        return new MtDataSource(mtDao);
-    }
-
 
 }

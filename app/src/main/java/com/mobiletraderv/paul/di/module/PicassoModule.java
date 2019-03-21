@@ -11,8 +11,7 @@ import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
 
-
-@Module(includes = {ContextModule.class, AppModule.class})
+@Module(includes = {ContextModule.class, NetworkModule.class})
 public class PicassoModule {
 
     @Provides
