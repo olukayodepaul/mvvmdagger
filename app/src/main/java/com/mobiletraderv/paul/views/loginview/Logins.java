@@ -31,8 +31,13 @@ public class Logins extends BaseObservable {
         this.password = password;
     }
 
-    public boolean isValidData(){
-        return !TextUtils.isEmpty(getEmail())
-                && !TextUtils.isEmpty(getPassword());
+    public int isValidData(){
+        if(TextUtils.isEmpty(getEmail())){
+            return 0;
+        }else if(TextUtils.isEmpty(getPassword())){
+            return 1;
+        }else{
+            return 2;
+        }
     }
 }

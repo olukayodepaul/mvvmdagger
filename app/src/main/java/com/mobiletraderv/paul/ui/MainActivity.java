@@ -5,6 +5,8 @@ import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
+
 import com.mobiletraderv.paul.mobiletradervt.R;
 import com.mobiletraderv.paul.mobiletradervt.databinding.ActivityMainBinding;
 import com.mobiletraderv.paul.viewmodels.RegistrationViewModel;
@@ -31,13 +33,13 @@ public class MainActivity extends AppCompatActivity implements LoginCallBack{
     }
 
     @Override
-    public void onSuccessful(String msg) {
-        hideProgressBar();
+    public void onSuccessful(String username, String password) {
+        Toast.makeText(this,username+" "+password,Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onError(String msg) {
-        hideProgressBar();
+
     }
 
     public void showProgressBar(){

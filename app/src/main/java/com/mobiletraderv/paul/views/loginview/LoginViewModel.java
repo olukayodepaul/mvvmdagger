@@ -6,13 +6,13 @@ import android.text.TextWatcher;
 import android.view.View;
 
 
-public class LoginViewModel extends ViewModel{
+public class LoginViewModel extends ViewModel {
 
     Logins logins;
     LoginCallBack registerCallBack;
 
     public LoginViewModel(LoginCallBack registerCallBack) {
-        this.logins =  new Logins();
+        this.logins = new Logins();
         this.registerCallBack = registerCallBack;
     }
 
@@ -21,9 +21,11 @@ public class LoginViewModel extends ViewModel{
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
+
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
+
             @Override
             public void afterTextChanged(Editable editable) {
                 logins.setEmail(editable.toString());
@@ -36,9 +38,11 @@ public class LoginViewModel extends ViewModel{
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
+
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
+
             @Override
             public void afterTextChanged(Editable editable) {
                 logins.setPassword(editable.toString());
@@ -46,16 +50,18 @@ public class LoginViewModel extends ViewModel{
         };
     }
 
-    public void onLoginClick(View view){
+    public void onLoginClick(View view) {
 
-        if(logins.isValidData())
-            registerCallBack.onSuccessful("true");
+        int res = logins.isValidData();
+
+        if (res == 0)
+            registerCallBack.onError("Please enter username");
+        else if (res == 1)
+            registerCallBack.onError("Please enter password");
         else
-            registerCallBack.onError("false");
+            registerCallBack.onSuccessful(logins.getEmail().toString(), logins.getPassword().toString());
+
     }
-
-
-
 
 
 }

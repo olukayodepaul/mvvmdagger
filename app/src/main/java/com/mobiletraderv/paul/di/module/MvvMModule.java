@@ -18,7 +18,6 @@ public class MvvMModule {
 
     private DatabaseManager dManager;
 
-
     public MvvMModule(@ApplicationContext Context context) {
         dManager =
                 Room.databaseBuilder(context, DatabaseManager.class, "demo-db")
