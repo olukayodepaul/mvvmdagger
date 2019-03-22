@@ -17,6 +17,7 @@ import com.mobiletraderv.paul.model.DatabaseDaoSQLQuery;
 import com.mobiletraderv.paul.model.DatabaseManager;
 import com.mobiletraderv.paul.model.RegistrationEntityTable;
 import com.mobiletraderv.paul.repository.MobiletraderRepository;
+import com.mobiletraderv.paul.repository.RetrofitService;
 
 import java.util.List;
 
@@ -25,7 +26,7 @@ import javax.inject.Inject;
 public class RegistrationViewModel extends AndroidViewModel {
 
     @Inject
-    public MobiletraderRepository mRepo;
+    MobiletraderRepository mRepo;
 
     public RegistrationViewModel(@NonNull Application application) {
         super(application);

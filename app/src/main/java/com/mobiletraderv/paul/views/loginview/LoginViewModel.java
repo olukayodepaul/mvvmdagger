@@ -8,11 +8,11 @@ import android.view.View;
 
 public class LoginViewModel extends ViewModel{
 
-    Logins register;
+    Logins logins;
     LoginCallBack registerCallBack;
 
     public LoginViewModel(LoginCallBack registerCallBack) {
-        this.register = new Logins();
+        this.logins =  new Logins();
         this.registerCallBack = registerCallBack;
     }
 
@@ -26,7 +26,7 @@ public class LoginViewModel extends ViewModel{
             }
             @Override
             public void afterTextChanged(Editable editable) {
-                register.setEmail(editable.toString());
+                logins.setEmail(editable.toString());
             }
         };
     }
@@ -41,14 +41,14 @@ public class LoginViewModel extends ViewModel{
             }
             @Override
             public void afterTextChanged(Editable editable) {
-                register.setPassword(editable.toString());
+                logins.setPassword(editable.toString());
             }
         };
     }
 
     public void onLoginClick(View view){
 
-        if(register.isValidData())
+        if(logins.isValidData())
             registerCallBack.onSuccessful("true");
         else
             registerCallBack.onError("false");

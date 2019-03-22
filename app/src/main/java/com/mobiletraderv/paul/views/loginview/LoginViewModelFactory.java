@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 
 public class LoginViewModelFactory extends ViewModelProvider.NewInstanceFactory {
 
-    LoginCallBack registerCallBack;
+    private LoginCallBack registerCallBack;
 
     public LoginViewModelFactory(LoginCallBack registerCallBack) {
         this.registerCallBack = registerCallBack;
@@ -18,6 +18,5 @@ public class LoginViewModelFactory extends ViewModelProvider.NewInstanceFactory 
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         return (T) new LoginViewModel(registerCallBack);
     }
-
 
 }
