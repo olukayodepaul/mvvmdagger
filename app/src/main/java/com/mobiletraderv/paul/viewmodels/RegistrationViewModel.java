@@ -25,9 +25,7 @@ import javax.inject.Inject;
 public class RegistrationViewModel extends AndroidViewModel {
 
     @Inject
-    public MobiletraderRepository repoMnager;
-
-    private MutableLiveData<List<RegistrationEntityTable>> items = new MutableLiveData<>();
+    public MobiletraderRepository mRepo;
 
     public RegistrationViewModel(@NonNull Application application) {
         super(application);
@@ -38,13 +36,11 @@ public class RegistrationViewModel extends AndroidViewModel {
                 .networkModule(new NetworkModule())
                 .build();
         component.inject(this);
-
     }
 
     public void Inserts(RegistrationEntityTable rEntTable){
-        new InsertAsyTask(repoMnager).execute(rEntTable);
+        new InsertAsyTask(mRepo).execute(rEntTable);
     }
-
 
     private class InsertAsyTask extends AsyncTask<RegistrationEntityTable, Void, Void> {
 

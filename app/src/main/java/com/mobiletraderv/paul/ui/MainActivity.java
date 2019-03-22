@@ -1,41 +1,65 @@
 package com.mobiletraderv.paul.ui;
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.os.AsyncTask;
+import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 
-import com.mobiletraderv.paul.di.component.ApplicationComponent;
-import com.mobiletraderv.paul.di.component.DaggerApplicationComponent;
-import com.mobiletraderv.paul.di.module.ContextModule;
-import com.mobiletraderv.paul.di.module.MvvMModule;
-import com.mobiletraderv.paul.di.module.NetworkModule;
-import com.mobiletraderv.paul.di.module.PicassoModule;
-import com.mobiletraderv.paul.model.RegistrationEntityTable;
 import com.mobiletraderv.paul.mobiletradervt.R;
-import com.mobiletraderv.paul.repository.MobiletraderRepository;
+import com.mobiletraderv.paul.mobiletradervt.databinding.ActivityMainBinding;
 import com.mobiletraderv.paul.viewmodels.RegistrationViewModel;
+import com.mobiletraderv.paul.views.loginview.LoginCallBack;
 
-import javax.inject.Inject;
+import butterknife.BindView;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity implements LoginCallBack{
 
     private RegistrationViewModel registrationVModel;
-    //@BindView(R.id.progressbar)
-    //ProgressBar mProgressBar;
+
+    @BindView(R.id.progressbar)
+    ProgressBar progressbar;
+
+    /*@BindView(R.id.u_email)
+    EditText u_email;
+
+    @BindView(R.id.u_paswd)
+    EditText u_paswd;
+
+    @BindView(R.id.loginButton)
+    Button loginButton;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main);
+        //ButterKnife.bind(this);
+        //registrationVModel = ViewModelProviders.of(this).get(RegistrationViewModel.class);
+        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        registrationVModel = ViewModelProviders.of(this).get(RegistrationViewModel.class);
-        RegistrationEntityTable register =
-                new RegistrationEntityTable(20, "oviosun", "olukayode", "oviosun");
-        registrationVModel.Inserts(register);
 
     }
 
+    @Override
+    public void onSuccessful(String msg) {
+        /*RegistrationEntityTable register =
+                new RegistrationEntityTable(7, "oviosun", "olukayode", "oviosun");
+        registrationVModel.Inserts(register);*/
+    }
 
+    @Override
+    public void onError(String msg) {
+
+    }
+
+    public void showProgressBar(){
+        progressbar.setVisibility(View.VISIBLE);
+    }
+
+    public void hideProgressBar(){
+        progressbar.setVisibility(View.GONE);
+    }
 
 }
