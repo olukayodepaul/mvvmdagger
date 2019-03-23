@@ -8,6 +8,8 @@ import android.view.View;
 
 public class LoginViewModel extends ViewModel {
 
+
+
     Logins logins;
     LoginCallBack registerCallBack;
 
@@ -59,8 +61,8 @@ public class LoginViewModel extends ViewModel {
         else if (res == 1)
             registerCallBack.onError("Please enter password");
         else
-            registerCallBack.onSuccessful(logins.getEmail().toString(), logins.getPassword().toString());
 
+            registerCallBack.onSuccessful(logins.getEmail().toString(), logins.getPassword().toString());
     }
 
 

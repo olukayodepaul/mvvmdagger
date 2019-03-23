@@ -5,7 +5,7 @@ import android.content.Context;
 import com.fatboyindustrial.gsonjodatime.DateTimeConverter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.mobiletraderv.paul.repository.RetrofitService;
+import com.mobiletraderv.paul.repository.Api;
 import com.mobiletraderv.paul.di.qualifier.ApplicationContext;
 import com.mobiletraderv.paul.di.scope.ApplicationScope;
 
@@ -31,7 +31,7 @@ public class NetworkModule {
     @Named("mt_server")
     Retrofit getRetrofit(OkHttpClient okHttpClient, Gson gson) {
         return new Retrofit.Builder()
-                .baseUrl("")
+                .baseUrl("http://www.gmail.com")
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(okHttpClient)
@@ -43,7 +43,7 @@ public class NetworkModule {
     @Named("dynamic_server")
     Retrofit getRetrotBasket(OkHttpClient okHttpClient, Gson gson) {
         return new Retrofit.Builder()
-                .baseUrl("")
+                .baseUrl("http://www.gmail.com")
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(okHttpClient)
@@ -92,8 +92,8 @@ public class NetworkModule {
 
     @Provides
     @ApplicationScope
-    public RetrofitService provideApiService(@Named("mt_server") Retrofit retrofit) {
-        return retrofit.create(RetrofitService .class);
+    public Api provideApiService(@Named("mt_server") Retrofit retrofit) {
+        return retrofit.create(Api.class);
     }
 
 }

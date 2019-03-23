@@ -3,7 +3,6 @@ package com.mobiletraderv.paul.viewmodels;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
-import android.arch.lifecycle.MutableLiveData;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
@@ -13,13 +12,9 @@ import com.mobiletraderv.paul.di.module.ContextModule;
 import com.mobiletraderv.paul.di.module.MvvMModule;
 import com.mobiletraderv.paul.di.module.NetworkModule;
 import com.mobiletraderv.paul.di.module.PicassoModule;
-import com.mobiletraderv.paul.model.DatabaseDaoSQLQuery;
-import com.mobiletraderv.paul.model.DatabaseManager;
 import com.mobiletraderv.paul.model.RegistrationEntityTable;
 import com.mobiletraderv.paul.repository.MobiletraderRepository;
-import com.mobiletraderv.paul.repository.RetrofitService;
-
-import java.util.List;
+import com.mobiletraderv.paul.repository.Api;
 
 import javax.inject.Inject;
 
@@ -27,6 +22,10 @@ public class RegistrationViewModel extends AndroidViewModel {
 
     @Inject
     MobiletraderRepository mRepo;
+
+    @Inject
+    Api retrofitService;
+
 
     public RegistrationViewModel(@NonNull Application application) {
         super(application);
@@ -43,6 +42,8 @@ public class RegistrationViewModel extends AndroidViewModel {
         new InsertAsyTask(mRepo).execute(rEntTable);
     }
 
+
+
     private class InsertAsyTask extends AsyncTask<RegistrationEntityTable, Void, Void> {
 
         MobiletraderRepository mRepo;
@@ -57,5 +58,8 @@ public class RegistrationViewModel extends AndroidViewModel {
             return null;
         }
     }
+
+
+
 
 }

@@ -29,4 +29,10 @@ public class MobileTraderDataSource implements MobiletraderRepository {
     public void insert(RegistrationEntityTable regEntityTable) {
         this.daoSQLQuery.insert(regEntityTable);
     }
+
+
+
+
+
+
 }

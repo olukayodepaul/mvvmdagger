@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-
 import com.mobiletraderv.paul.mobiletradervt.R;
 import com.mobiletraderv.paul.mobiletradervt.databinding.ActivityMainBinding;
 import com.mobiletraderv.paul.viewmodels.RegistrationViewModel;
@@ -39,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements LoginCallBack{
 
     @Override
     public void onError(String msg) {
-
     }
 
     public void showProgressBar(){
