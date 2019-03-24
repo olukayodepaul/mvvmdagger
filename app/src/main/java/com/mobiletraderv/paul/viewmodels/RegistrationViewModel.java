@@ -32,6 +32,7 @@ public class RegistrationViewModel extends AndroidViewModel {
     MobiletraderRepository mRepo;
     private Disposable mDisposable;
     private MutableLiveData<String> mError = new MutableLiveData<>();
+    private MutableLiveData<Throwable> tError = new MutableLiveData<>();
     private MutableLiveData<UserLoginPojo> mLiveData = new MutableLiveData<>();
 
     public RegistrationViewModel(@NonNull Application application) {
@@ -56,6 +57,10 @@ public class RegistrationViewModel extends AndroidViewModel {
 
     public MutableLiveData<UserLoginPojo> getData() {
         return mLiveData;
+    }
+
+    public MutableLiveData<Throwable> getThrowable() {
+        return tError;
     }
 
 
@@ -94,13 +99,13 @@ public class RegistrationViewModel extends AndroidViewModel {
                         },
                         error -> {
                             //onError
-                            mError.postValue("information");
+                            tError.postValue(error);
                         },
                         () -> {
+
                             //onComplete
                         }
                 );
-
     }
 
     private void disposeDisposable() {

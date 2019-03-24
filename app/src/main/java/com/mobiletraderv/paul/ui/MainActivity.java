@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.mobiletraderv.paul.mobiletradervt.R;
 import com.mobiletraderv.paul.mobiletradervt.databinding.ActivityMainBinding;
+import com.mobiletraderv.paul.model.RegistrationEntityTable;
 import com.mobiletraderv.paul.pojo.UserLoginPojo;
 import com.mobiletraderv.paul.viewmodels.RegistrationViewModel;
 import com.mobiletraderv.paul.views.loginview.LoginCallBack;
@@ -45,15 +46,21 @@ public class MainActivity extends AppCompatActivity implements LoginCallBack{
         registrationVModel.getData().observe(this, data -> {
 
             UserLoginPojo userDetails = data;
+            RegistrationEntityTable register = new RegistrationEntityTable
+                    (
+                         data.id, data.name, data.ecode, data.custno, data.dbroute, data.sellingunit,
+                            data.lat, data.lat, data.vehiclename, data.vehicleid, data.depot_waiver, data.clokin, data.clokout
+                    );
+            registrationVModel.Inserts(register);
+            for(int i = 0; i < data.modules.size(); i++){
 
-
+            }
         });
-
     }
 
     @Override
     public void onError(String msg) {
-
+        showProgressBar();
     }
 
     private void callBack(String msg) {

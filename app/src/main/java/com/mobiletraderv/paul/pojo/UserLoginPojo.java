@@ -60,13 +60,13 @@ public class UserLoginPojo {
     @Expose
     public String depot_waiver;
 
-    @SerializedName("clockinroster")
+    @SerializedName("clokin")
     @Expose
-    public PojoClockin clockinroster;
+    public String clokin;
 
-    @SerializedName("clockoutroster")
+    @SerializedName("clokout")
     @Expose
-    public PojoClockOut clockoutroster;
+    public String clokout;
 
     @SerializedName("modules")
     @Expose
