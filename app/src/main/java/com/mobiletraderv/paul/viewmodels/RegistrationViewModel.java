@@ -17,6 +17,7 @@ import com.mobiletraderv.paul.model.RegistrationEntityTable;
 import com.mobiletraderv.paul.pojo.UserLoginPojo;
 import com.mobiletraderv.paul.repository.MobiletraderRepository;
 import com.mobiletraderv.paul.views.loginview.LoginCallBack;
+
 import javax.inject.Inject;
 
 import io.reactivex.Observer;
@@ -25,13 +26,13 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Response;
 
-public class RegistrationViewModel extends AndroidViewModel{
+public class RegistrationViewModel extends AndroidViewModel {
 
     @Inject
     MobiletraderRepository mRepo;
-    LoginCallBack registerCallBack;
     private Disposable mDisposable;
     private MutableLiveData<String> mError = new MutableLiveData<>();
+    private MutableLiveData<UserLoginPojo> mLiveData = new MutableLiveData<>();
 
     public RegistrationViewModel(@NonNull Application application) {
         super(application);
@@ -45,7 +46,7 @@ public class RegistrationViewModel extends AndroidViewModel{
     }
 
 
-    public void Inserts(RegistrationEntityTable rEntTable){
+    public void Inserts(RegistrationEntityTable rEntTable) {
         new InsertAsyTask(mRepo).execute(rEntTable);
     }
 
@@ -53,7 +54,9 @@ public class RegistrationViewModel extends AndroidViewModel{
         return mError;
     }
 
-
+    public MutableLiveData<UserLoginPojo> getData() {
+        return mLiveData;
+    }
 
 
     private class InsertAsyTask extends AsyncTask<RegistrationEntityTable, Void, Void> {
@@ -77,12 +80,17 @@ public class RegistrationViewModel extends AndroidViewModel{
         disposeDisposable();
         mError.postValue(username);
 
-        /*mDisposable = mDisposable = mRepo.userLogin(username, password, imei)
+        mDisposable = mDisposable = mRepo.userLogin(username, password, imei)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread(), true)
                 .subscribe(data -> {
                             //onNext
-                            mError.postValue("error");
+                            UserLoginPojo mData = data.body();
+                            if(mData.status==200){
+                                mLiveData.postValue(mData);
+                            }else{
+                                mError.postValue("error");
+                            }
                         },
                         error -> {
                             //onError
@@ -92,7 +100,7 @@ public class RegistrationViewModel extends AndroidViewModel{
                             //onComplete
                         }
                 );
-                */
+
     }
 
     private void disposeDisposable() {
