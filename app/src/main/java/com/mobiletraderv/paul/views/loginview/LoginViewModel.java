@@ -5,13 +5,17 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 
+import com.mobiletraderv.paul.di.qualifier.ApplicationContext;
+import com.mobiletraderv.paul.repository.MobiletraderRepository;
+
 
 public class LoginViewModel extends ViewModel {
 
 
-
     Logins logins;
     LoginCallBack registerCallBack;
+    private MobiletraderRepository mobRepo;
+
 
     public LoginViewModel(LoginCallBack registerCallBack) {
         this.logins = new Logins();

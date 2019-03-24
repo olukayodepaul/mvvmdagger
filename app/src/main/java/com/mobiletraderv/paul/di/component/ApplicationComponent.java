@@ -5,7 +5,7 @@ import android.content.Context;
 import com.mobiletraderv.paul.di.module.MvvMModule;
 import com.mobiletraderv.paul.di.module.PicassoModule;
 import com.mobiletraderv.paul.repository.MobiletraderRepository;
-import com.mobiletraderv.paul.repository.Api;
+import com.mobiletraderv.paul.model.Api;
 import com.mobiletraderv.paul.di.module.NetworkModule;
 import com.mobiletraderv.paul.di.module.ContextModule;
 import com.mobiletraderv.paul.di.qualifier.ApplicationContext;

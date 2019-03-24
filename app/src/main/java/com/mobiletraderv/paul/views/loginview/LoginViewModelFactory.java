@@ -4,6 +4,8 @@ import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 
+import com.mobiletraderv.paul.repository.MobiletraderRepository;
+
 
 public class LoginViewModelFactory extends ViewModelProvider.NewInstanceFactory {
 

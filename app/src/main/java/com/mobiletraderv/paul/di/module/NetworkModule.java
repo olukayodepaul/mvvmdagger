@@ -5,7 +5,7 @@ import android.content.Context;
 import com.fatboyindustrial.gsonjodatime.DateTimeConverter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.mobiletraderv.paul.repository.Api;
+import com.mobiletraderv.paul.model.Api;
 import com.mobiletraderv.paul.di.qualifier.ApplicationContext;
 import com.mobiletraderv.paul.di.scope.ApplicationScope;
 

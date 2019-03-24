@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.mobiletraderv.paul.di.qualifier.ApplicationContext;
 import com.mobiletraderv.paul.di.scope.ApplicationScope;
+import com.mobiletraderv.paul.model.Api;
 import com.mobiletraderv.paul.model.DatabaseDaoSQLQuery;
 import com.mobiletraderv.paul.model.DatabaseManager;
 import com.mobiletraderv.paul.repository.MobileTraderDataSource;
@@ -13,7 +14,7 @@ import com.mobiletraderv.paul.repository.MobiletraderRepository;
 import dagger.Module;
 import dagger.Provides;
 
-@Module(includes = ContextModule.class)
+@Module(includes = {ContextModule.class, NetworkModule.class})
 public class MvvMModule {
 
     private DatabaseManager dManager;
@@ -38,7 +39,7 @@ public class MvvMModule {
 
     @Provides
     @ApplicationScope
-    MobiletraderRepository AppRepository(DatabaseDaoSQLQuery dManagers) {
-        return new MobileTraderDataSource(dManagers);
+    MobiletraderRepository AppRepository(DatabaseDaoSQLQuery dManager, Api api) {
+        return new MobileTraderDataSource(dManager, api);
     }
 }
