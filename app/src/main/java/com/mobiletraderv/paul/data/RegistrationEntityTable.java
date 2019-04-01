@@ -1,12 +1,7 @@
-package com.mobiletraderv.paul.model;
+package com.mobiletraderv.paul.data;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
-
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
-import org.parceler.Generated;
 
 @Entity
 public class RegistrationEntityTable {

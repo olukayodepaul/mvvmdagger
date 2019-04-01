@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    >
-
-<data>
-<variable
-    name="LoginViewModel"
-    type="com.mobiletraderv.paul.views.loginview.LoginViewModel" />
-</data>
-
-
 <RelativeLayout
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context="com.mobiletraderv.paul.ui.MainActivity"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/dip_blue"
     >
 
@@ -54,8 +45,7 @@ tools:context="com.mobiletraderv.paul.ui.MainActivity"
         android:inputType="textEmailAddress"
         android:padding="10dp"
         android:textColor="@color/white"
-        android:textSize="15sp"
-        app:addTextChangedListener="@{LoginViewModel.getEmail}"/>
+        android:textSize="15sp" />
 
 </android.support.design.widget.TextInputLayout>
 
@@ -77,8 +67,7 @@ tools:context="com.mobiletraderv.paul.ui.MainActivity"
         android:inputType="textPassword"
         android:padding="10dp"
         android:textColor="@color/white"
-        android:textSize="15sp"
-        app:addTextChangedListener="@{LoginViewModel.getPassword}"/>
+        android:textSize="15sp" />
 
 </android.support.design.widget.TextInputLayout>
 
@@ -96,7 +85,6 @@ tools:context="com.mobiletraderv.paul.ui.MainActivity"
     android:textColor="@color/white_color"
     android:textSize="17sp"
     android:fontFamily="@font/roboto_bold"
-    android:onClick="@{LoginViewModel::onLoginClick}"
   />
 
 <RelativeLayout
@@ -117,4 +105,3 @@ tools:context="com.mobiletraderv.paul.ui.MainActivity"
 </RelativeLayout>
 
 </RelativeLayout>
-</layout>

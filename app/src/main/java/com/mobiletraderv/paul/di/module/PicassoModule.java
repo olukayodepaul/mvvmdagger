@@ -1,12 +1,12 @@
 package com.mobiletraderv.paul.di.module;
 
+
 import android.content.Context;
 
 import com.jakewharton.picasso.OkHttp3Downloader;
 import com.mobiletraderv.paul.di.qualifier.ApplicationContext;
 import com.mobiletraderv.paul.di.scope.ApplicationScope;
 import com.squareup.picasso.Picasso;
-
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
